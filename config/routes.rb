@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
 
-end
+  resources :results, only: [:index]
+
+  root to: "results#index"
+end 
