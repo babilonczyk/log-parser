@@ -3,12 +3,18 @@ This exercise was made for a trainee ruby role in SmartPension. Its content you 
 It is a really small application, which purpose is to parse a log file ( you can find its content in log/webserver.log)
 
 #### How to install:
-First we need to install all dependencies:
-`` bundle install``
-Then run the server:
-`` rails s ``
-Open browser on localhost:
-``http://localhost:3000/``
+
+1) First we need to install all dependencies:
+
+``` bundle install ```
+
+2) Run the server:
+
+``` rails s ```
+
+3) Open browser on localhost:
+
+```http://localhost:3000/```
 
 #### How to run tests:
-`` rspec spec/``
+```rspec spec/```
