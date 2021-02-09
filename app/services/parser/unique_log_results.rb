@@ -3,7 +3,10 @@ module Parser
 
   class UniqueLogResults
   
-    def initialize( path: file_path, sort: 'DESC' )
+    def initialize( path: nil, sort: 'DESC' )
+      raise Exception.new('Wrong argument. It should be ASC OR DESC') unless ( sort.upcase == 'DESC' || sort.upcase == 'ASC' )
+      raise Exception.new('Wrong path') unless ( !path.nil? && path.length > 0 )
+      
       @path = path
       @sort = sort
     end
@@ -15,9 +18,6 @@ module Parser
     private
   
     def parse_file(path, sort)
-      raise Exception.new('Wrong argument. It should be ASC OR DESC') unless sort.upcase == ( 'DESC' || 'ASC' )
-      raise Exception.new('Wrong path') unless ( !path.nil? && path.length > 0 )
-
       file = File.readlines(path)
 
       #Split records content into 2 element array
