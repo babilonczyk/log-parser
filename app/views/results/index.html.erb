@@ -1,11 +1,23 @@
 <main>
   <section>
     <h2>Non Unique Log Results</h2>
-    ...
+    <ol>
+      <% @nonunique_results.each do |page|%>
+        <li>
+          <span>page: <%= page[:page] %>  --------  views: <%= page[:count] %></span>
+        </li>
+      <%end%>
+    </ol>
   </section>
   
   <section>
     <h2>Unique Log Results</h2>
-    ...
+    <ol>
+      <% @unique_results.each do |page|%>
+        <li>
+          <span>page: <%= page[:page] %>  --------  views: <%= page[:count] %></span>
+        </li>
+      <%end%>
+    </ol>
   </section>
 </main>
