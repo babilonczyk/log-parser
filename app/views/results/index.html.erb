@@ -1,23 +1,27 @@
 <main>
-  <section>
-    <h2>Non Unique Log Results</h2>
-    <ol>
-      <% @nonunique_results.each do |page|%>
-        <li>
-          <span>page: <%= page[:page] %>  --------  views: <%= page[:count] %></span>
-        </li>
-      <%end%>
-    </ol>
-  </section>
-  
-  <section>
-    <h2>Unique Log Results</h2>
-    <ol>
-      <% @unique_results.each do |page|%>
-        <li>
-          <span>page: <%= page[:page] %>  --------  views: <%= page[:count] %></span>
-        </li>
-      <%end%>
-    </ol>
-  </section>
+  <div class="center">
+    <section class="section">
+      <h2>Non Unique Log Results</h2>
+      <ol class="parse-results">
+        <% @nonunique_results.each do |page|%>
+          <li class="parse-result">
+            <div class="parse-result-cell"><span>📄:</span><span><%= page[:page] %></span></div>  
+            <div class="parse-result-cell"><span>👀:</span><span><%= page[:count] %></span></div>
+          </li>
+        <%end%>
+      </ol>
+    </section>
+    
+    <section class="section">
+      <h2>Unique Log Results</h2>
+      <ol class="parse-results">
+        <% @unique_results.each do |page|%>
+          <li class="parse-result">
+            <div class="parse-result-cell"><span>📄:</span><span><%= page[:page] %></span></div>  
+            <div class="parse-result-cell"><span>👀:</span><span><%= page[:count] %></span></div>
+          </li>
+        <%end%>
+      </ol>
+    </section>
+  </div>
 </main>
