@@ -3,18 +3,21 @@ module Parser
 
   class UniqueLogResults
   
-    def initialize( path: file_path, sort: 'desc' )
+    def initialize( path: file_path, sort: 'DESC' )
       @path = path
       @sort = sort
     end
   
-    def call
-      parse_file(@path)
+    def call 
+      parse_file(@path, @sort)
     end
   
     private
   
-    def parse_file(path)
+    def parse_file(path, sort)
+      raise Exception.new('Wrong argument. It should be ASC OR DESC') unless sort.upcase == ( 'DESC' || 'ASC' )
+      raise Exception.new('Wrong path') unless ( !path.nil? && path.length > 0 )
+
       file = File.readlines(path)
 
       #Split records content into 2 element array
@@ -32,7 +35,7 @@ module Parser
       file_unique_visits = file.uniq
 
       #Go through array, count number of page views and return array of hashes with view count
-      res = []
+      result = []
       file_unique_pages.each { |page|
         count = 0
 
@@ -42,10 +45,15 @@ module Parser
           end
         }
 
-        res << { page: page, count: count}
+        result << { page: page, count: count }
       }
 
-      return res
+      #Sort
+      if sort.upcase == 'DESC'
+        result.sort_by { |record| record[:count] }.reverse
+      elsif sort.upcase == 'ASC'
+        result.sort_by { |record| record[:count] }
+      end
     end
   end
 end
